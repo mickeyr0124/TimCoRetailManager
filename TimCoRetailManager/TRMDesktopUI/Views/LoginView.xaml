@@ -18,6 +18,7 @@
             <RowDefinition Height="auto"    />
             <RowDefinition Height="auto"    />
             <RowDefinition Height="auto"    />
+            <RowDefinition Height="auto"    />
             <RowDefinition Height="*"    />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" 
@@ -30,32 +31,48 @@
             Login Form
         </TextBlock>
         
-        <!-- Username row -->
-        <TextBlock Grid.Row="1"
+        <!-- Error Message row-->
+        <TextBlock x:Name="ErrorMessage"
+                   MaxWidth="300"
+                   Grid.Row="1"
                    Grid.Column="1"
-                   Margin="0 0 0 10">
+                   Grid.ColumnSpan="2"
+                   Foreground="Red"
+                   TextWrapping="Wrap"
+                   Visibility="{Binding IsErrorVisible, 
+                    Converter={StaticResource BooleanToVisibilityConverter},
+                    FallbackValue=Collapsed}"
+                   Margin="0 0 0 20"
+                   />
+        
+
+
+        <!-- Username row -->
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   Margin="0 0 5 10">
             Username:
         </TextBlock>
         <TextBox x:Name="UserName" 
-                 Grid.Row="1"
+                 Grid.Row="2"
                  Grid.Column="2" 
-                 MinWidth="150"
+                 MinWidth="350"
                  Margin="0 0 0 10" />
         
         <!-- Password row -->
-        <TextBlock Grid.Row="2"
+        <TextBlock Grid.Row="3"
                    Grid.Column="1"
-                   Margin="0 0 0 20">
+                   Margin="0 0 5 20">
             Password:
         </TextBlock>
         <PasswordBox x:Name="Password" 
-                 Grid.Row="2"
+                 Grid.Row="3"
                  Grid.Column="2" 
-                 MinWidth="150"
+                 MinWidth="350"
                  Margin="0 0 0 20" />
         
         <!-- Login Button -->
-        <Button Grid.Row="3"
+        <Button Grid.Row="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"
