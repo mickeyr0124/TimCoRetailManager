@@ -9,6 +9,7 @@ namespace TRMDesktopUI.Library.Helpers
 {
     public class ConfigHelper : IConfigHelper
     {
+        //TODO: Move from this config to the API
         public decimal GetTaxRate()
         {
 

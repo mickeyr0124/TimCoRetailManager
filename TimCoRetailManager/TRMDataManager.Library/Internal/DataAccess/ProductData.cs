@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TRMDataManager.Library.Internal.Models;
+using TRMDataManager.Library.Models;
 
 namespace TRMDataManager.Library.Internal.DataAccess
 {
@@ -17,6 +17,15 @@ namespace TRMDataManager.Library.Internal.DataAccess
 
             return output;
 
+        }
+
+        public ProductModel GetProductById(int ProductId)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var output = sql.LoadData<ProductModel, dynamic>("dbo.spProduct_GetById", new { Id = ProductId  }, "TRMData").FirstOrDefault();
+
+            return output;
         }
     }
 }
