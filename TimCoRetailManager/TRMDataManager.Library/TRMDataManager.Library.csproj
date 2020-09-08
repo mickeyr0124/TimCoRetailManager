@@ -46,8 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigHelper.cs" />
-    <Compile Include="Internal\DataAccess\ProductData.cs" />
-    <Compile Include="Internal\DataAccess\SaleData.cs" />
+    <Compile Include="DataAccess\ProductData.cs" />
+    <Compile Include="DataAccess\SaleData.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SaleDBModel.cs" />
     <Compile Include="Models\SaleDetailDBModel.cs" />
