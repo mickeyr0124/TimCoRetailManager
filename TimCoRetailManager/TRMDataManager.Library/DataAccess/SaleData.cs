@@ -10,7 +10,6 @@ namespace TRMDataManager.Library.Internal.DataAccess
 {
     public class SaleData
     {
-
         public void SaveSale(SaleModel saleInfo, string cashierId)
         {
             //TODO: MAke this SOLID/DRY/Better
@@ -57,9 +56,6 @@ namespace TRMDataManager.Library.Internal.DataAccess
 
             sale.Total = sale.SubTotal + sale.Tax;
 
-
-            
-
             using (SqlDataAccess sql = new SqlDataAccess())
             {
                 sql.StartTransaction("TRMData");
@@ -89,18 +85,16 @@ namespace TRMDataManager.Library.Internal.DataAccess
                 }              
             }
 
-
-
-
         }
-        //public List<ProductModel> GetProducts()
-        //{
-        //SqlDataAccess sql = new SqlDataAccess();
 
-        //var output = sql.LoadData<ProductModel, dynamic>("dbo.spProduct_GetAll", new { }, "TRMData");
+        public List<SaleReportModel> GetSaleReport()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
 
-        //return output;
+            var output = sql.LoadData<SaleReportModel, dynamic>("dbo.spSale_SaleReport", new { }, "TRMData");
 
-        //}
+            return output;
+        }
+
     }
 }
