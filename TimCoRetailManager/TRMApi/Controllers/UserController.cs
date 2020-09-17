@@ -102,7 +102,7 @@ namespace TRMApi.Controllers
         public async Task AddARole(UserRolePairModel pairing)
         {
             var user = await _userManager.FindByIdAsync(pairing.UserId);
-            await _userManager.RemoveFromRoleAsync(user, pairing.RoleName);
+            await _userManager.AddToRoleAsync(user, pairing.RoleName);
         }
 
 
@@ -112,7 +112,7 @@ namespace TRMApi.Controllers
         public async Task RemoveARole(UserRolePairModel pairing)
         {
             var user = await _userManager.FindByIdAsync(pairing.UserId);
-            await _userManager.AddToRoleAsync(user, pairing.RoleName);
+            await _userManager.RemoveFromRoleAsync(user, pairing.RoleName);
 
         }
     }
