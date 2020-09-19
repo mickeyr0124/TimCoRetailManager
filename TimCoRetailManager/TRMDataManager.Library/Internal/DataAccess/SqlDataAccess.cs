@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace TRMDataManager.Library.Internal.DataAccess
 {
-    internal class SqlDataAccess :IDisposable
+    public class SqlDataAccess : IDisposable, ISqlDataAccess
     {
 
         IConfiguration _config;
-        public SqlDataAccess(IConfiguration config )
+        public SqlDataAccess(IConfiguration config)
         {
             _config = config;
         }
@@ -29,7 +29,7 @@ namespace TRMDataManager.Library.Internal.DataAccess
             string connectionString = GetConnectionString(connectionStringName);
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                List<T> rows = connection.Query<T>(storedProcedure, parameters, 
+                List<T> rows = connection.Query<T>(storedProcedure, parameters,
                     commandType: CommandType.StoredProcedure).ToList();
 
                 return rows;
@@ -106,12 +106,12 @@ namespace TRMDataManager.Library.Internal.DataAccess
             {
                 try
                 {
-                    CommitTransaction(); 
+                    CommitTransaction();
                 }
                 catch
                 {
 
-                   // TODO: log this issue
+                    // TODO: log this issue
                 }
 
             }
@@ -119,12 +119,6 @@ namespace TRMDataManager.Library.Internal.DataAccess
             _transaction = null;
             _connection = null;
         }
-
-        // Open connection.start transaction method
-        // load using the transaction
-        // save using the transaction
-        // Close connection/stop the transaction
-        // Dispose
 
     }
 }
